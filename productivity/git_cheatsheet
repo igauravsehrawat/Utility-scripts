@@ -17,4 +17,19 @@ then
 fi" && rm -fr "$(git rev-parse --git-dir)/refs/original/"
 
 
+#adding multiple user to have ssh access same time.
 
+Host another.github.com
+	Hostname github.com
+	PreferredAuthentications publickey
+	IdentityFile ~/.ssh/another_id_rsa
+
+#add repo url as
+git remote set-url origin git@another.github.com:username/repo
+
+#don't forge to ssh-add (should be with passphrase)
+ssh-add key
+
+
+	
+	
